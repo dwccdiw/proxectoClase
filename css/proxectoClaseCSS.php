@@ -9,25 +9,34 @@
     font-family: Diavlo;
     src: url(fonts/Diavlo_LIGHT_II_37.otf) format('opentype');
 }     
-html,body{ background-color: #305858;
-    }
-#contenedor{margin:0 auto;
-            margin-top:20px;
-            width:960px;                
+html{
+	margin:0;
+	padding:0;
+	background-color: #305858;
+	background-image:url(images/troncosGrande.png);
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+    background-position: center top;
+    padding-top:50px;
+    
+}
+	body { 	margin:0 auto;
+			margin-top:20px;
+            width:1010px;                
             background-image:url(images/fondo1.jpg);}
-#contenedor,#cabecera,#contenidos,#pie{
+body,header,footer,#contenidos{
   
     $probasombra;
 }
 
-#cabecera,#pie{margin:10px 20px;
-          background-color:$colorCabeceraPie;
-              overflow:hidden;}
+header,footer {	margin:10px 20px;
+          		background-color:$colorCabeceraPie;
+              	overflow:hidden;}
 #contenidos{margin:40px 20px;
         background-color:gray;}
-#pie{height:50px;}        
+footer{height:50px;}        
 /*                              CABECERA                */
-#cabecera img{width:100px;
+header img{width:100px;
               height:100px;}      
 .logoizquierda{
     width:15%;
@@ -95,4 +104,5 @@ legend {text-decoration: underline;
     padding-bottom: 1em;
 }        
  /*                              FIN Rexistrarse                */        
-"?>
+"
+?>

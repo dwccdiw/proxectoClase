@@ -2,9 +2,9 @@
  header('content-type:text/css');
  $sombraBlurSpread="1px 1px 5px 8px #666666";
  $colorCabeceraPie="#306060";
- $probasombra='box-shadow:"1px 1px 5px 8px #666666";
+ $probasombra="box-shadow:1px 1px 5px 8px #666666;
     padding:10px;
-    border-radius:15px;';
+    border-radius:15px;";
  echo "
 @font-face {
     font-family: Diavlo;
@@ -17,9 +17,7 @@ html,body{ background-color: #305858;
             width:960px;                
             background-image:url(images/fondo1.jpg);}
 #contenedor,#cabecera,#contenidos,#pie{
-  /*  box-shadow:$sombraBlurSpread;
-    padding:10px;
-    border-radius:15px;*/
+  
     $probasombra;
 }
 

@@ -1,0 +1,59 @@
+<div id="contenidos">
+    <div id="cuerpo">                          
+        <p id="disponibilidad">
+            <label for="usuario">Usuario</label>                                
+            <input type="text" id="usuarioDisponible" name="usuario" maxlength="16" value="" title="Introduce un usuario para comprobar si existe" />                                
+            <button id="comprobacion">Comprobar dispoñibilidade</button>
+        </p>        
+        <fieldset>
+            <legend>Datos para a alta do usuario 
+            </legend>
+            <div id="labelsAlta">
+                <p>
+                    <label for="nome" title="Introduce o teu nome">Nome</label>                    
+                </p>
+                <p>
+                    <label for="apelidos" title="Introduce os teus apelidos">Apelidos</label>                    
+                </p>
+                <p>
+                    <label for="email" title="Introduce o teu e-mail. É necesario para recibi-los correos informativos">E-mail</label>                    
+                </p>
+                <p>
+                    <label for="contrasinal" title="Introduce o teu contrasinal. Máximo 8 carácteres">Contrasinal</label>                    
+                </p>
+                <p>
+                    <label for="recaudador" title="Introduce a tua persoa de contacto">Contacto</label>                    
+                </p>
+            </div>
+            <div id="inputsAlta">
+                <p>
+                    <input type=text maxlength=20 size=20 id=nome name=nome value="" title="Introduce o teu nome" />                   
+                </p>
+                <p>
+                    <input type=text maxlength=50 size=50 id=apelidos name=apelidos value="" title="Introduce os teus apelidos" />                   
+                </p>
+                <p>
+                    <input type=text maxlength=100 size=50 id=email name=email value="" title="Introduce o teu e-mail. Necesario para recibi-los correos informativos" /> 
+                    <label>&nbspNecesario para recibir información</label>    
+                </p>
+                <p>
+                    <input type=text maxlength=8 size=8 id=contrasinal name=contrasinal value="" title="Introduce o teu contrasinal. Máximo 8 carácteres" /> 
+                    <label>&nbspLonxitude máxima 8 carácteres</label>
+                </p>            
+                <p>
+                   <!-- <?PintarRecaudadores();?>-->
+                    <label> &nbsp(Posteriormente a persoa de contacto elexida por tí, te dará de alta no sistema)</label>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <input name=solalta value="Enviar Solicitude" TYPE=submit />
+                </p>
+            </div>
+        </fieldset>
+    </div> <!--cuerpo-->
+    <p class="navegar">
+        <a  href=<? echo $GLOBALS['dominio'];echo $GLOBALS['inicio']; ?> > << Voltar a pantalla de Inicio</a>
+    </p>  
+</div>
+

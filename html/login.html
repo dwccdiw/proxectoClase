@@ -1,0 +1,31 @@
+<div id="contenidos">
+    <form action=proba.php method=POST>
+    <div id="cuerpo">          
+            <div id="labels">
+                <p>
+                    <label for="usuario">Usuario</label>                    
+                </p>
+                <p>
+                    <label for="contrasinal">Contrasinal</label>                    
+                </p>
+            </div>
+            <div id="inputs">
+                <p>                    
+                    <input type="text" id="usuario" name="usuario" maxlength="16" value="" />                    
+                </p>
+                <p>                    
+                    <input type="password" id="contrasinal" name="contrasinal" maxlength="8" value="" />                    
+                </p>                       
+            </div>
+            <div class="flotacion"></div>
+    </div>
+    <div id="acciones">
+        <p>
+            <input type="submit" name=validarusuario value="Entrar ao sistema" />                                        
+        </p>        
+    </div>
+    </form>
+    <a  href=<? echo $GLOBALS['dominio'];echo "rexistrarse.php"; ?> >Rexistrarse </a>
+    <a  href=<? echo $GLOBALS['dominio'];echo "home.php" ?> >home</a>
+</div>   
+

@@ -22,7 +22,8 @@ html{
 }
 	body { 	margin:0 auto;
 			margin-top:20px;
-            width:1010px;                
+            width:1010px;
+            proba                          
             background-image:url(images/fondo1.jpg);}
 body,header,footer,#contenidos{
   

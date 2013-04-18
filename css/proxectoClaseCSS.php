@@ -1,6 +1,5 @@
 <?php
  header('content-type:text/css');
- $sombraBlurSpread="1px 1px 5px 8px #666666";
  $colorCabeceraPie="#306060";
  $probasombra="box-shadow:1px 1px 5px 8px #666666;
     padding:10px;

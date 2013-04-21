@@ -7,7 +7,7 @@ function Conexion() {
     global $id_conexion;
     global $BD;
     $maquina = "localhost";
-    $BD = "euro2012";
+    $BD = "proxectoClase";
     $userBD = "root";
     $contrasinal = "renaido";
 

@@ -33,7 +33,7 @@
                     <input type=text maxlength=50 size=50 id=apelidos name=apelidos value="" title="Introduce os teus apelidos" />                   
                 </p>
                 <p>
-                    <input type=text maxlength=100 size=50 id=email name=email value="" title="Introduce o teu e-mail. Necesario para recibi-los correos informativos" /> 
+                    <input type=text maxlength=100 size=40 id=email name=email value="" title="Introduce o teu e-mail. Necesario para recibi-los correos informativos" /> 
                     <label>&nbspNecesario para recibir información</label>    
                 </p>
                 <p>
@@ -41,21 +41,19 @@
                     <label>&nbspLonxitude máxima 8 carácteres</label>
                 </p>            
                 <p>
-                   <!-- <?PintarRecaudadores();?>-->
+                   <!-- php PintarRecaudadores();-->
                     <label> &nbsp(Posteriormente a persoa de contacto elexida por tí, te dará de alta no sistema)</label>
                 </p>
             </div>
             <div>
                 <p>
-                    <input name=solalta value="Enviar Solicitude" TYPE=submit />
+                    <button id="solicitude">Enviar Solicitude</button> 
                 </p>
             </div>
         </fieldset>
     </div> <!--cuerpo-->
     <p class="navegar">
-        <a  href=
-         <!-- <?php echo $GLOBALS['dominio'];echo $GLOBALS['inicio']; ?> --> 
-         >  Voltar a pantalla de Inicio</a>
+        <a  href=<?php echo $GLOBALS['dominio'];echo $GLOBALS['inicio']; ?> >  Voltar a pantalla de Inicio</a>
     </p>  
 </div>
 

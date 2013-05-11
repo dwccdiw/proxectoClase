@@ -1,5 +1,11 @@
 <?php
  header('content-type:text/css');
+ header('Cache-control: max-age:400000');
+ header('Cache-control: public',false);
+ $offset = 60 * 60;
+ $lm = "Last-Modified: Sun, 21 Apr 2013 19:48:06 GMT";
+ header($lm);
+ 
  $colorCabeceraPie="#306060";
  $probasombra="box-shadow:1px 1px 5px 8px #666666;
     padding:10px;
@@ -44,8 +50,8 @@ header img{width:100px;
     float:left;}
 .titulocabecera{
     width:70%;
-    float:left;
-    font-family: Diavlo; 
+    float:left;    
+	font-family: 'Caesar Dressing', cursive; /*fuente google*/
     font-weight: 500;
     font-size:300%;
     letter-spacing:20px;
@@ -64,7 +70,8 @@ header img{width:100px;
 div.flotacion {clear: both;}
 #cuerpo{         
     color:white;
-    font-size: 1.2em;       
+    font-size: 1.2em;
+	font-family: Diavlo;       
 }
 #cuerpo #labels {
     float:left; 
@@ -102,8 +109,22 @@ legend {text-decoration: underline;
 #cuerpo #inputsAlta{
     float:left;
     width:85%; 
-    padding-bottom: 1em;
-}        
+    padding-bottom: 1em;	
+}
+        
+#avisar{
+	position:absolute;
+	top:40%;
+	left:45%;
+	background-color:red;
+	border-radius:10px;
+	padding:10px;
+	color:whitesmoke;
+	visibility:hidden;
+}
+#avisar p{
+	margin:10px;
+}
  /*                              FIN Rexistrarse                */        
 "
 ?>

@@ -1,67 +1,73 @@
-/*var imagenSeleccionada;
- function validarTexto(p_texto){
- var ok=true;
- if (p_texto == null || p_texto.length == 0 || /^\s+$/.test(p_texto)) {
- ok=false;
- }
- return ok;
- }
- function validarEmail(p_texto){
- var ok=true;
- if (!(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(p_texto))) {
- ok=false;
- }
- return ok;
- }
- function validarCombo(p_combo){
- var ok=true;
- if(p_combo.selectedIndex == null || p_combo.selectedIndex == 0 ) {
- ok=false;
- }
- return ok;
- }
- function validarSolicitudAlta(){
- var ok=true;
- var mensaje="";
- var user = document.getElementById('usuarioDisponible');
- if (user != null){ // Para el caso de comprobar la disponibilidad del usuario
- if (!validarTexto(user.value)){
- mensaje="Debes introducir un nome de usuario";
- ok=false;
- };
- }
- else { // Para el caso de los campos de alta de usuario
- var nome = document.getElementById('nome');
- if (!validarTexto(nome.value)){
- mensaje+="Debes introducir un nome \n";
- ok=false;
- };
- var apelidos = document.getElementById('apelidos');
- if (!validarTexto(apelidos.value)){
- mensaje+="Debes introducir os apelidos \n";
- ok=false;
- };
- var email = document.getElementById('email');
- if (!validarEmail(email.value)){
- mensaje+="Debes introducir un email correcto \n";
- ok=false;
- };
- var contrasinal = document.getElementById('contrasinal');
- if (!validarTexto(contrasinal.value)){
- mensaje+="Debes introducir o contrasinal \n";
- ok=false;
- };
- var combo = document.getElementById('recaudador');
- if (!validarCombo(combo)){
- mensaje+="Debes introducir unha persoa de contacto \n";
- ok=false;
- };
- }
- if (!ok){
- alert(mensaje);
- }
- return ok;
- }
+var imagenSeleccionada;
+function validarTexto(p_texto) {
+	var ok = true;
+	if (p_texto == null || p_texto.length == 0 || /^\s+$/.test(p_texto)) {
+		ok = false;
+	}
+	return ok;
+}
+
+function validarEmail(p_texto) {
+	var ok = true;
+	if (!(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(p_texto))) {
+		ok = false;
+	}
+	return ok;
+}
+
+function validarCombo(p_combo) {
+	var ok = true;
+	if (p_combo.selectedIndex == null || p_combo.selectedIndex == 0) {
+		ok = false;
+	}
+	return ok;
+}
+
+function alertar(p_mensaje) {
+	$("#avisar").html(p_mensaje);
+	$("#avisar").fadeIn(500, function() {
+		$("#avisar").css({
+			visibility : "visible"
+		});
+	});
+}
+
+function validarSolicitudAlta() {
+	var ok = true;
+	var mensaje = "";
+	var nome = document.getElementById('nome');
+	if (!validarTexto(nome.value)) {
+		mensaje += "<p>Debes introducir un nome </p>";
+		ok = false;
+	};
+	var apelidos = document.getElementById('apelidos');
+	if (!validarTexto(apelidos.value)) {
+		mensaje += "<p>Debes introducir os apelidos </p>";
+		ok = false;
+	};
+	var email = document.getElementById('email');
+	if (!validarEmail(email.value)) {
+		mensaje += "<p>Debes introducir un email correcto </p>";
+		ok = false;
+	};
+	var contrasinal = document.getElementById('contrasinal');
+	if (!validarTexto(contrasinal.value)) {
+		mensaje += "<p>Debes introducir o contrasinal </p>";
+		ok = false;
+	};
+	/*var combo = document.getElementById('recaudador');
+	 if (!validarCombo(combo)) {
+	 mensaje += "Debes introducir unha persoa de contacto </p>";
+	 ok = false;
+	 };*/
+
+	if (!ok) {
+		alertar(mensaje);
+	}
+	return ok;
+}
+
+/*
  function limpiaElemento(p_objeto){
  p_objeto.src="Euro2012/imagenes/pixelTransparente.png";
  p_objeto.nextElementSibling.innerText="";
@@ -128,9 +134,20 @@
  alert("falta algunha selección por asignar")
  }
  }
-
- function asignarEventos(){
  */
+function clickAvisar() {
+	$('#avisar').fadeOut(1500, function() {
+		$("#avisar").css({
+			visibility : "hidden"
+		});
+	});
+
+}
+
+function asignarEventos() {
+	$("#avisar").click(clickAvisar);
+}
+
 /* $("#aviso").click(function(){
  if ($('#aviso').hasClass('ocultarAviso')){
  $("#aviso").removeClass("ocultarAviso");
@@ -227,50 +244,59 @@
  }*/
 
 function enviarDatosAltaUsuario() {
-	/*comprobar datos*/	
-	$.post("grabarAltaUsuario.php", {
-		usuario : $("#usuarioDisponible").val(),
-		nome : $("#nome").val(),
-		apelidos : $("#apelidos").val(),
-		email : $("#email").val(),
-		contrasinal : $("#contrasinal").val()
-	}, function(respuesta) {
-		if (respuesta == "1") {
-			alert("... gravación correcta ...");
-			$("#solicitude").css({
-				visibility : "hidden"
-			});
 
-		}
-	});
+	if (validarSolicitudAlta()) {
+		clickAvisar();
+		$.post("grabarAltaUsuario.php", {
+			usuario : $("#usuarioDisponible").val(),
+			nome : $("#nome").val(),
+			apelidos : $("#apelidos").val(),
+			email : $("#email").val(),
+			contrasinal : $("#contrasinal").val()
+		}, function(respuesta) {
+			if (respuesta == "1") {
+				alert("... gravación correcta ...");
+				$("#solicitude").css({
+					visibility : "hidden"
+				});
+
+			}
+		});
+	}
 }
 
 function comprobarDisponibilidadUsuario() {
-	$.get("comprobarUsuario.php", {
-		usuario : $("#usuarioDisponible").val()
-	}, function(respuesta) {
-		if (respuesta == "1") {
-			alert("... usuario xa existente téntao con outro ...");
-		} else {
-			$("#disponibilidad").css({
-				visibility : "hidden"
-			});
-			var htmlStr = $("fieldset>legend").html();
-			$("fieldset>legend").text(htmlStr + $("#usuarioDisponible").val());
-			$("fieldset").css({
-				visibility : "visible"
-			});
-			$("#solicitude").click(enviarDatosAltaUsuario);
-		}
-	});
+	var usuarioPosible = $("#usuarioDisponible").val();
+	if ((usuarioPosible == null) || (!validarTexto(usuarioPosible))) {
+		alertar("Debes introducir un nome de usuario");
+	} else {
+		clickAvisar();
+		$.get("comprobarUsuario.php", {
+			usuario : usuarioPosible
+		}, function(respuesta) {
+			if (respuesta == "1") {
+				alert("... usuario xa existente téntao con outro ...");
+			} else {
+				$("#disponibilidad").css({
+					visibility : "hidden"
+				});
+				var htmlStr = $("fieldset>legend").html();
+				$("fieldset>legend").text(htmlStr + $("#usuarioDisponible").val());
+				$("fieldset").css({
+					visibility : "visible"
+				});
+				$("#solicitude").click(enviarDatosAltaUsuario);
+			}
+		});
+	}
 }
 
 
 $(document).ready(function() {
 	/*  $( "#tabsMenu ul li a").click(clickMenu);
 	 $( "#tabsMenu" ).tabs();
-	 paginasNoIndex();
-	 asignarEventos();  */
+	 paginasNoIndex();*/
+	asignarEventos();
 	if (window.document.URL.indexOf("php") == -1 || window.document.URL.indexOf("index.php") != -1) {
 		//alert("hola principal");
 	} else {

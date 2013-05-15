@@ -30,28 +30,29 @@ function alertar(p_mensaje) {
 			visibility : "visible"
 		});
 	});
+
 }
 
 function validarSolicitudAlta() {
 	var ok = true;
 	var mensaje = "";
-	var nome = document.getElementById('nome');
-	if (!validarTexto(nome.value)) {
+	var nome = $('#nome').val();
+	if (!validarTexto(nome)) {
 		mensaje += "<p>Debes introducir un nome </p>";
 		ok = false;
 	};
-	var apelidos = document.getElementById('apelidos');
-	if (!validarTexto(apelidos.value)) {
+	var apelidos = $('#apelidos').val();
+	if (!validarTexto(apelidos)) {
 		mensaje += "<p>Debes introducir os apelidos </p>";
 		ok = false;
 	};
-	var email = document.getElementById('email');
-	if (!validarEmail(email.value)) {
+	var email = $('#email').val();
+	if (!validarEmail(email)) {
 		mensaje += "<p>Debes introducir un email correcto </p>";
 		ok = false;
 	};
-	var contrasinal = document.getElementById('contrasinal');
-	if (!validarTexto(contrasinal.value)) {
+	var contrasinal = $('#contrasinal').val();
+	if (!validarTexto(contrasinal)) {
 		mensaje += "<p>Debes introducir o contrasinal </p>";
 		ok = false;
 	};
@@ -61,6 +62,22 @@ function validarSolicitudAlta() {
 	 ok = false;
 	 };*/
 
+	if (!ok) {
+		alertar(mensaje);
+	}
+	return ok;
+}
+function validarLogin(p_usuario,p_contrasinal) {
+	var ok = true;
+	var mensaje = "";	
+	if (!validarTexto(p_usuario)) {
+		mensaje += "<p>Debes introducir un usuario </p>";
+		ok = false;
+	};	
+	if (!validarTexto(p_contrasinal)) {
+		mensaje += "<p>Debes introducir o contrasinal </p>";
+		ok = false;
+	};
 	if (!ok) {
 		alertar(mensaje);
 	}
@@ -268,7 +285,7 @@ function enviarDatosAltaUsuario() {
 function comprobarDisponibilidadUsuario() {
 	var usuarioPosible = $("#usuarioDisponible").val();
 	if ((usuarioPosible == null) || (!validarTexto(usuarioPosible))) {
-		alertar("Debes introducir un nome de usuario");
+		alertar("<p>Debes introducir un nome de usuario</p>");
 	} else {
 		clickAvisar();
 		$.get("comprobarUsuario.php", {
@@ -291,6 +308,21 @@ function comprobarDisponibilidadUsuario() {
 	}
 }
 
+function logearse() {
+	var usuario = $("#usuario").val();
+	var contrasinal = $("#contrasinal").val();
+	if (validarLogin(usuario,contrasinal))
+	 	{clickAvisar();
+		 $.post("logearse.php", {
+				usuario : usuario,
+				contrasinal: contrasinal
+				}, function(respuesta) {
+						if (respuesta == 0) {alert("... fallo de autenticacion ...");} 
+						else { window.location.href="home.php";}
+				});
+		}
+		
+}
 
 $(document).ready(function() {
 	/*  $( "#tabsMenu ul li a").click(clickMenu);
@@ -298,7 +330,7 @@ $(document).ready(function() {
 	 paginasNoIndex();*/
 	asignarEventos();
 	if (window.document.URL.indexOf("php") == -1 || window.document.URL.indexOf("index.php") != -1) {
-		//alert("hola principal");
+		$("#login").click(logearse);
 	} else {
 		if (window.document.URL.indexOf("rexistrarse.php") != -1) {
 			$("#comprobacion").click(comprobarDisponibilidadUsuario);

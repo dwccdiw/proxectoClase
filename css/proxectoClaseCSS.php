@@ -114,7 +114,7 @@ legend {text-decoration: underline;
         
 #avisar{
 	position:absolute;
-	top:40%;
+	top:2%;
 	left:45%;
 	background-color:red;
 	border-radius:10px;

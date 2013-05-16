@@ -292,7 +292,7 @@ function comprobarDisponibilidadUsuario() {
 			usuario : usuarioPosible
 		}, function(respuesta) {
 			if (respuesta == "1") {
-				alert("... usuario xa existente téntao con outro ...");
+				alert("... usuario xa existente téntao con outro ...");				
 			} else {
 				$("#disponibilidad").css({
 					visibility : "hidden"

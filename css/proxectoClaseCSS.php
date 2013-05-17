@@ -26,22 +26,20 @@ html{
     padding-top:50px;
     
 }
-	body { 	margin:0 auto;
-			margin-top:20px;
-            width:1010px;
-            proba                          
+body { 	margin:0 auto;
+			margin-top:20px;			
+            width:1000px;                              
             background-image:url(images/fondo1.jpg);}
-body,header,footer,#contenidos{
+body,header,footer,article{
   
     $probasombra;
 }
-
 header,footer {	margin:10px 20px;
           		background-color:$colorCabeceraPie;
               	overflow:hidden;}
-#contenidos{margin:40px 20px;
-        background-color:gray;}
-footer{height:50px;}        
+article {margin:40px 20px;
+         background-color:gray;}
+footer {height:50px;}        
 /*                              CABECERA                */
 header img{width:100px;
               height:100px;}      

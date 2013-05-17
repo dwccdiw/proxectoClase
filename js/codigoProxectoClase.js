@@ -1,4 +1,5 @@
 var imagenSeleccionada;
+
 function validarTexto(p_texto) {
 	var ok = true;
 	if (p_texto == null || p_texto.length == 0 || /^\s+$/.test(p_texto)) {
@@ -298,7 +299,7 @@ function comprobarDisponibilidadUsuario() {
 					visibility : "hidden"
 				});
 				var htmlStr = $("fieldset>legend").html();
-				$("fieldset>legend").text(htmlStr + $("#usuarioDisponible").val());
+				$("fieldset>legend").text(htmlStr + $("#usuarioDisponible").val());				
 				$("fieldset").css({
 					visibility : "visible"
 				});
@@ -317,12 +318,23 @@ function logearse() {
 				usuario : usuario,
 				contrasinal: contrasinal
 				}, function(respuesta) {
-						if (respuesta == 0) {alert("... fallo de autenticacion ...");} 
-						else { window.location.href="home.php";}
+						if (respuesta == 0) {alert("... fallo de autenticacion ....");} 
+						else { window.location.href="home.php";	}
 				});
 		}
 		
 }
+function home() {
+	 $.post("datosLogeado.php", {},
+	 		 function(respuesta) {
+						if (respuesta == 0) {alert("... se perdió la conexión ...");} 
+						else {  arrayDatosUsuario=$.parseJSON(respuesta)
+							var mensaje="Nombre: " + arrayDatosUsuario.nome + " Email: " + arrayDatosUsuario.email;						
+							$("#muestraUsuario").text(mensaje);
+							}
+				});		
+}
+
 
 $(document).ready(function() {
 	/*  $( "#tabsMenu ul li a").click(clickMenu);
@@ -336,7 +348,7 @@ $(document).ready(function() {
 			$("#comprobacion").click(comprobarDisponibilidadUsuario);
 		} else {
 			if (window.document.URL.indexOf("home.php") != -1) {
-				//    alert("hola home");
+				home();
 			}
 		}
 	}
